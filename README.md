@@ -2,6 +2,8 @@
 
 rsync wrapper that narrates file transfers in a Hatsune Miku voice.
 
+If rsync is going to be vibe-coded, we might as well be vibe-coding TTS wrappers for it now too 😄
+
 ## How it works
 
 1. Runs `rsync` with Japanese locale (`ja_JP.UTF-8`) so output appears in Japanese
