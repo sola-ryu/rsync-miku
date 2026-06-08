@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# rsync-miku — narrate rsync progress in a Hatsune Miku voice 🌸
+# Wrapper script for easy CLI access.
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PYTHON="${PYTHON:-python3}"
+
+exec "$PYTHON" "$SCRIPT_DIR/rsync_miku.py" "$@"

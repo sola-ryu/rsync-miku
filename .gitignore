@@ -1,0 +1,21 @@
+# Voice model downloads
+models/*.zip
+models/*.ckpt
+models/*.pth.bak
+models/*.pt
+
+# Applio cache
+applio/models/
+applio/logs/
+applio/ApplioBackup/
+applio/.ipynb_checkpoints/
+
+# Temp audio files
+.tmp/
+
+# Config (optional local overrides)
+# config.json
+
+# OS junk
+.DS_Store
+__pycache__/

@@ -1,0 +1,13 @@
+{
+  "voice": "default",
+  "embedder": "japanese-hubert-base",
+  "tts_engine": "auto",
+  "dry_run": false,
+  "min_length": 3,
+  "pitch": -12,
+  "index_rate": 0.7,
+  "rms_mix": 0.8,
+  "protect": 0.5,
+  "f0_method": "rmvpe",
+  "clean_strength": 0.7
+}
