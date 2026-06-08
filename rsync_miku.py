@@ -310,6 +310,14 @@ def run_rsync_pipeline(args):
     """Run rsync and stream output through the Miku pipeline (threaded)."""
     cfg = load_config()
 
+    # Apply CLI overrides to config
+    for key in ["voice", "embedder", "tts_engine", "dry_run", "min_length",
+                 "pitch", "index_rate", "rms_mix", "protect", "f0_method", "clean_strength"]:
+        cli_key = key.replace("-", "_")
+        val = getattr(args, cli_key)
+        if val is not None:
+            cfg[key] = val
+
     cmd = ["rsync"] + args.rsync_flags + [args.source, args.dest]
     env = os.environ.copy()
     env["LC_ALL"] = "ja_JP.UTF-8"
@@ -421,7 +429,12 @@ TTS engines:
     parser.add_argument("--save-config", action="store_true",
                         help="Save current settings to config.json")
 
-    args = parser.parse_args()
+    # Use parse_known_args to let unknown args (rsync flags) pass through
+    args, unknown = parser.parse_known_args()
+
+    # Merge unknown args into rsync_flags
+    if unknown:
+        args.rsync_flags = unknown + args.rsync_flags
 
     # Apply CLI overrides to config
     for key in ["voice", "embedder", "tts_engine", "dry_run", "min_length",
